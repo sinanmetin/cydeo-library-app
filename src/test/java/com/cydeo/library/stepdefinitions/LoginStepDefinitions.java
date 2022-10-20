@@ -5,10 +5,12 @@ import com.cydeo.library.pages.LoginPage;
 import com.cydeo.library.pages.StudentDashboardPage;
 import com.cydeo.library.utilities.ConfigurationReader;
 import com.cydeo.library.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -64,4 +66,49 @@ public class LoginStepDefinitions {
     }
 
 
+    @When("user enters librarian username {string}")
+    public void userEntersLibrarianUsername(String username) {
+        login.usernameFld.sendKeys(username);
+    }
+
+    @And("user enters librarian password {string}")
+    public void userEntersLibrarianPassword(String password) {
+        login.inputPassword.sendKeys(password+ Keys.ENTER);
+    }
+
+    @When("user enters student username {string}")
+    public void userEntersStudentUsername(String username) {
+        login.usernameFld.sendKeys(username);
+    }
+
+    @And("user enters student password {string}")
+    public void userEntersStudentPassword(String password) {
+        login.inputPassword.sendKeys(password+Keys.ENTER);
+    }
+
+    @When("I login using {string} and {string}")
+    public void iLoginUsingAnd(String username, String password) {
+        login.login(username,password);
+    }
+
+    @And("there should be Users module")
+    public void thereShouldBeUsersModule() {
+        Assert.assertTrue(libDash.usersNumber.isDisplayed());
+    }
+
+    @And("there should be Books module")
+    public void thereShouldBeBooksModule() {
+        Assert.assertTrue(libDash.booksNumber.isDisplayed());
+    }
+
+    @And("there should be Borrowed Books module")
+    public void thereShouldBeBorrowedBooksModule() {
+        Assert.assertTrue(libDash.borrowedBooksNumber.isDisplayed());
+    }
+
+    @Then("account holder name should be {string}")
+    public void accountHolderNameShouldBe(String name) {
+        Assert.assertEquals(name,libDash.userMenu.getText());
+
+    }
 }

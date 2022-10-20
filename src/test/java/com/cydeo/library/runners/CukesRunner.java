@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
         glue = "com/cydeo/library/stepdefinitions",
         dryRun = false,
         publish = true,
-        tags = ""
+        tags = "@wip"
 )
 
 

@@ -14,4 +14,18 @@ public class LibrarianDashboardPage {
 
     @FindBy(xpath = "//a[@id='navbarDropdown']/span")
     public WebElement userMenu;
+
+    @FindBy(css = "h2#user_count")
+    public WebElement usersNumber;
+
+    @FindBy(css = "h2#book_count")
+    public WebElement booksNumber;
+
+    @FindBy(css = "h2#borrowed_books")
+    public WebElement borrowedBooksNumber;
+
+
+
+
+
 }
